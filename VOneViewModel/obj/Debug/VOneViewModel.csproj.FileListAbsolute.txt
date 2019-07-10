@@ -1,0 +1,8 @@
+C:\Users\Davood\source\repos\VOneMvc\VOneViewModel\obj\Debug\VOneViewModel.csprojAssemblyReference.cache
+C:\Users\Davood\source\repos\VOneMvc\VOneViewModel\obj\Debug\VOneViewModel.csproj.CoreCompileInputs.cache
+C:\Users\Davood\source\repos\VOneMvc\VOneViewModel\bin\Debug\VOneViewModel.dll
+C:\Users\Davood\source\repos\VOneMvc\VOneViewModel\bin\Debug\VOneViewModel.pdb
+C:\Users\Davood\source\repos\VOneMvc\VOneViewModel\obj\Debug\VOneViewModel.dll
+C:\Users\Davood\source\repos\VOneMvc\VOneViewModel\obj\Debug\VOneViewModel.pdb
+C:\Users\Davood\source\repos\VOneMvc\VOneViewModel\obj\Debug\VOneViewModel.Test.resources
+C:\Users\Davood\source\repos\VOneMvc\VOneViewModel\obj\Debug\VOneViewModel.csproj.GenerateResource.cache

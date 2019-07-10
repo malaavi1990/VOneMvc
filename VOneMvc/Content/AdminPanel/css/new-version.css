@@ -1,0 +1,54 @@
+﻿@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: normal;
+    src: url('~/Content/Fonts/IranSans/iransans-web.eot');
+    src: url('~/Content/Fonts/IranSans/iransans-web.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+    url('~/Content/Fonts/IranSans/iransans-web.woff2') format('woff2'), /* Chrome36+, Opera24+*/
+    url('~/Content/Fonts/IranSans/iransans-web.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('~/Content/Fonts/IranSans/iransans-web.ttf') format('truetype');
+}
+
+body {
+    direction: rtl;
+    text-align: right;
+    font-family: 'IRANSans';
+}
+
+* {
+    direction: rtl;
+    text-align: right;
+    font-family: 'IRANSans';
+}
+
+div, p, h1, h2, h3, h4, h5, h6, input, button, textarea, a, ul, li, table {
+    direction: rtl;
+    text-align: right;
+    font-family: 'IRANSans';
+}
+
+nav.sidebar {
+}
+
+
+.sidebar .nav:not(.sub-menu) > .nav-item > .nav-link {
+    padding: 15px 3px;
+}
+
+    .sidebar .nav:not(.sub-menu) > .nav-item > .nav-link span {
+        font-size: 17px;
+        color: blue;
+    }
+
+.sidebar .nav .nav-item.active > .nav-link i, .sidebar .nav .nav-item.active > .nav-link .menu-title, .sidebar .nav .nav-item.active > .nav-link .menu-arrow {
+    
+}
+
+.sidebar .nav:not(.sub-menu) {
+    margin-top: 40px;
+    margin-right: -20px;
+}
+
+.sidebar .nav.sub-menu .nav-item {
+    padding-right: 30px;
+}

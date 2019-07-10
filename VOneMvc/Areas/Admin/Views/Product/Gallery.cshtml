@@ -1,0 +1,23 @@
+﻿@model long
+
+@{
+    ViewBag.Title = "گالری محصولات";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-8" id="div-list-gallery">
+            @Html.Action("ListGallery", new { id = Model })
+        </div>
+        <div class="col-4" id="div-action-gallery">
+            @Html.Action("AddGallery")
+        </div>
+    </div>
+</div>
+
+@section script
+{
+    <script src="~/Content/AdminPanel/js/panel-script.js"></script>
+    <script src="/Content/AdminPanel/js/file-upload.js"></script>
+}

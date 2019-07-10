@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "دسته بندی تراکت ها";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-8" id="div-list-tcategory">
+            @Html.Action("ListCategory")
+        </div>
+        <div class="col-4" id="div-action-tcategory">
+            @Html.Action("AddCategory")
+        </div>
+    </div>
+</div>

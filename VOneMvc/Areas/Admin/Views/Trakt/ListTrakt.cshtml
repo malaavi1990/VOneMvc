@@ -1,0 +1,106 @@
+﻿@model IEnumerable<VOneDomain.Models.Trakt>
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">لیست تراکت ها</h4>
+                <hr />
+                <button onclick="showAddTrakt()" class="btn btn-primary mr-2">افزودن تراکت</button>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    تصویر شاخص
+                                </th>
+                                <th>
+                                    عنوان تراکت
+                                </th>
+                                <th>
+                                    تاریخ
+                                </th>
+                                <th>
+                                    وضعیت
+                                </th>
+                                <th>
+                                    دسته بندی
+                                </th>
+                                <th>
+                                    عملیات
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="py-1">
+                                        <img src="/Content/Image/Trakt/Thumbnail/@item.ImageUrl" alt="image">
+                                    </td>
+                                    <td>
+                                        @item.TraktTitle
+                                    </td>
+                                    <td>
+                                        @item.CreateDate
+                                    </td>
+                                    <td>
+                                        @item.TraktStatus.Tittle
+                                    </td>
+                                    <td>
+                                        @item.TraktCategory.Title
+                                    </td>
+                                    <td>
+                                        <button onclick="showEditTrakt(@item.TraktId)" type="button" class="btn btn-primary btn-rounded btn-icon">
+                                            <i class="mdi mdi-pencil-circle-outline"></i>
+                                        </button>
+                                        <button onclick="deleteTrakt(@item.TraktId)" type="button" class="btn btn-danger btn-rounded btn-icon">
+                                            <i class="mdi mdi-delete-outline"></i>
+                                        </button>
+                                        <button onclick="lockTrakt(@item.TraktId)" type="button" id="btn-lock-user" class="btn @(!item.IsActive?"btn-warning":"btn-success") btn-rounded btn-icon">
+                                            <i class="mdi @(!item.IsActive?"mdi-lock-outline":"mdi-lock-open-outline")"></i>
+                                        </button>
+                                        <button onclick="" type="button" class="btn btn-behance btn-rounded btn-icon">
+                                            <i class="mdi mdi-eye-outline"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pt-5">
+                    <div class="" style="width: max-content; margin: auto" role="group">
+                        @{
+                            int pageCount = ViewBag.PageCount;
+                            int curentPage = ViewBag.CurentPage;
+                            if (curentPage > 1)
+                            {
+                                <button onclick="changePageTrakt(@curentPage-1)" type="button" class="btn btn-sm btn-outline-secondary"><</button>
+                            }
+                            else
+                            {
+                                <button type="button" class="btn btn-sm btn-outline-secondary"><</button>
+                            }
+                            for (int i = 1; i <= pageCount; i++)
+                            {
+                                <button onclick="changePageTrakt(@i)" type="button" class="btn btn-sm @(ViewBag.CurentPage==i||(ViewBag.CurentPage==null&&i==1)?"btn-primary":"btn-outline-secondary")">@i</button>
+                            }
+                            if (curentPage < pageCount)
+                            {
+                                <button onclick="changePageTrakt(@curentPage+1)" type="button" class="btn btn-sm btn-outline-secondary">></button>
+                            }
+                            else
+                            {
+                                <button type="button" class="btn btn-sm btn-outline-secondary">></button>
+                            }
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

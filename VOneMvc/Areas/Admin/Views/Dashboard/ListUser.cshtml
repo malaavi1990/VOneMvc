@@ -1,0 +1,46 @@
+﻿@model IEnumerable<VOneDomain.Models.User>
+
+<div class="col-md-12 stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <p class="card-title">آخرین کاربران</p>
+            <div class="table-responsive">
+                <table id="recent" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>تصویر</th>
+                            <th>نام و نام خانوادگی</th>
+                            <th>نام کاربری</th>
+                            <th>ایمیل</th>
+                            <th>تاریخ ثبت نام</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="py-1">
+                                    <img src="/Content/Image/User/Thumbnail/@item.ProfileImage" alt="image">
+                                </td>
+                                <td>@item.FullName</td>
+                                <td>@item.UserName</td>
+                                <td>@item.Email</td>
+                                <td>@item.RegisterDate</td>
+                                <td>
+                                    <button onclick="deleteUserDash(@item.UserId)" type="button" class="btn btn-danger btn-rounded btn-icon">
+                                        <i class="mdi mdi-delete-outline"></i>
+                                    </button>
+                                    <button onclick="lockUserDash(@item.UserId)" type="button" id="btn-lock-user" class="btn @(item.IsLock?"btn-warning":"btn-success") btn-rounded btn-icon">
+                                        <i class="mdi @(item.IsLock?"mdi-lock-outline":"mdi-lock-open-outline")"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

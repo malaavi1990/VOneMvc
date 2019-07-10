@@ -1,0 +1,6 @@
+C:\Users\Davood\source\repos\VOneMvc\VOneUtility\bin\Debug\VOneUtility.dll
+C:\Users\Davood\source\repos\VOneMvc\VOneUtility\bin\Debug\VOneUtility.pdb
+C:\Users\Davood\source\repos\VOneMvc\VOneUtility\obj\Debug\VOneUtility.csproj.CoreCompileInputs.cache
+C:\Users\Davood\source\repos\VOneMvc\VOneUtility\obj\Debug\VOneUtility.dll
+C:\Users\Davood\source\repos\VOneMvc\VOneUtility\obj\Debug\VOneUtility.pdb
+C:\Users\Davood\source\repos\VOneMvc\VOneUtility\obj\Debug\VOneUtility.csprojAssemblyReference.cache

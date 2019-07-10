@@ -1,0 +1,55 @@
+﻿@using VOneDomain.Models
+@model TraktCategory
+
+@using (Ajax.BeginForm("EditCategory",
+    "Trakt",
+    FormMethod.Post,
+    new AjaxOptions()
+    {
+        OnSuccess = "loadListTCategory",
+        UpdateTargetId = "div-list-tcategory"
+    }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.TraktCategoryId)
+    @Html.HiddenFor(model => model.CreateDate)
+    @Html.HiddenFor(model => model.IsDeleted)
+
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">ویرایش دسته</h4>
+                    <p class="card-description mb-5">
+                        اطلاعات را وارد کرده و دکمه تایید را یزنید
+                    </p>
+                    <hr />
+                    <div class="form-group">
+                        <label for="parentId">سر دسته</label>
+                        <select class="form-control" name="ParentId" id="parentId">
+                            @{
+                                IEnumerable<TraktCategory> categories = ViewBag.Categories;
+                                <option @(Model.ParentId == null ? "selected" : "") value="0">دسته اصلی</option>
+                                foreach (var category in categories)
+                                {
+                                    <option @(Model.ParentId == category.TraktCategoryId ? "selected" : "") value="@category.TraktCategoryId">@category.Title</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="title">عنوان دسته</label>
+                        <input type="text" value="@Model.Title" class="form-control" id="title" name="Title" placeholder="عنوان محصول">
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">تایید</button>
+                    <button type="button" onclick="showAddTCategory()" class="btn btn-light">بازگشت</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script src="/Content/AdminPanel/js/file-upload.js"></script>
+<script src="~/Content/AdminPanel/js/panel-script.js"></script>
+
+

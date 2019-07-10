@@ -1,0 +1,45 @@
+﻿@model IEnumerable<VOneDomain.Models.Product>
+
+<div class="col-md-12 stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <p class="card-title">آخرین محصولات</p>
+            <div class="table-responsive">
+                <table id="recent" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>تصویر</th>
+                            <th>عنوان محصول</th>
+                            <th>قیمت</th>
+                            <th>تاریخ</th>
+                            <th>دسته بندی</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="py-1">
+                                    <img src="/Content/Image/Product/Thumbnail/@item.ImageUrl" alt="image">
+                                </td>
+                                <td>@item.Title</td>
+                                <td>@item.Price تومان</td>
+                                <td>@item.CreateDate</td>
+                                <td>@item.ProductCategory.Title</td>
+                                <td>
+                                    <button onclick="showEditProduct(@item.ProductId)" type="button" class="btn btn-primary btn-rounded btn-icon">
+                                        <i class="mdi mdi-pencil-circle-outline"></i>
+                                    </button>
+                                    <button onclick="deleteProductDash(@item.ProductId)" type="button" class="btn btn-danger btn-rounded btn-icon">
+                                        <i class="mdi mdi-delete-outline"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

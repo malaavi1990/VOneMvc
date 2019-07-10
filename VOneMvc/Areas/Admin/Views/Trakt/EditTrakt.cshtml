@@ -1,0 +1,147 @@
+﻿@using VOneDomain.Models
+@model VOneViewModel.TraktViewModels
+
+@using (Ajax.BeginForm("EditTrakt", "Trakt",
+    FormMethod.Post,
+    new AjaxOptions()
+    {
+        OnSuccess = "loadListTrakt",
+        UpdateTargetId = "div-trakt-container"
+    }, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">ویرایش تراکت</h4>
+                    <p class="card-description mb-1">
+                        اطلاعات را وارد کرده و دکمه تایید را یزنید
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        @if (ViewBag.Error == true)
+                        {
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger pt-2 border rounded border-danger" })
+                        }
+                    </div>
+                    <div class="form-group">
+                        <label for="title">عنوان تراکت</label>
+                        <input type="text" class="form-control" value="@Model.TraktTitle" id="title" name="TraktTitle" placeholder="عنوان محصول">
+                    </div>
+                    <div class="form-group">
+                        <label for="FromDate">شروع نمایش از</label>
+                        <input type="date" class="form-control" id="FromDate" name="FromDate" placeholder="شروع نمایش">
+                    </div>
+                    <div class="form-group">
+                        <label for="ToDate">اتمام نمایش در</label>
+                        <input type="date" class="form-control" id="ToDate" name="ToDate" placeholder="اتمام نمایش">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">توضیح مختصر</label>
+                        <textarea class="form-control" name="Description" id="description" rows="4">@Model.Description</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="text">توضیح کامل</label>
+                        <textarea class="form-control" name="Text" id="text" rows="10">@Model.Text</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="tags">کلمات کلیدی</label>
+                        <input type="text" class="form-control" value="@ViewBag.Tags" id="tags" name="Tags" placeholder="کلمات کلیدی تراکت">
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">تایید</button>
+                    <button type="button" onclick="showListTrakt()" class="btn btn-light">بازگشت</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="categoryId">دسته بندی</label>
+                        <select class="form-control" name="TraktCategoryId" id="categoryId">
+                            @{
+                                IEnumerable<TraktCategory> categories = ViewBag.Categories;
+                                foreach (var category in categories)
+                                {
+                                    <option @(Model.TraktCategoryId == category.TraktCategoryId ? "selected" : "") value="@category.TraktCategoryId">@category.Title</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="typeId">نوع تراکت</label>
+                        <select class="form-control" name="TraktTypeId" id="typeId">
+                            @{
+                                IEnumerable<TraktType> types = ViewBag.Types;
+                                foreach (var type in types)
+                                {
+                                    <option @(Model.TraktTypeId == type.TraktTypeId ? "selected" : "") value="@type.TraktTypeId">@type.Title</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="statusId">وضعیت تراکت</label>
+                        <select class="form-control" name="TraktStatusId" id="statusId">
+                            @{
+                                IEnumerable<TraktStatus> status = ViewBag.Status;
+                                foreach (var state in status)
+                                {
+                                    <option @(Model.TraktStatusId == state.TraktStatusId ? "selected" : "") value="@state.TraktStatusId">@state.Tittle</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>تصویر شاخص</label>
+                        <div>
+                            <img id="img-preview-trakt" src="~/Content/Image/@(ViewBag.Image==null?"no-image.png":"Trakt/"+ViewBag.Image+"")" class="img-thumbnail" />
+                        </div>
+                        <input type="file" id="input-img-trakt" name="image" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                            <input type="text" name="image" class="form-control file-upload-info" disabled="" placeholder="تصویر شاخص">
+                            <span class="input-group-append">
+                                <button class="file-upload-browse btn btn-primary" type="button">بارگزاری</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input id="chk-show-tslider" type="checkbox" @(Model.HaveSlider == true ? "checked" : "") value="true" name="HaveSlider" class="form-check-input">
+                                نمایش در اسلایدر
+                                <i class="input-helper"></i>
+                            </label>
+                        </div>
+                    </div>
+                    <div style="display: @(Model.HaveSlider?"block":"none")" id="div-image-tslider" class="form-group">
+                        <label>تصویر اسلایدر</label>
+                        <div>
+                            <img id="img-preview-slider" src="~/Content/Image/@(ViewBag.Slider==null?"no-image.png":"Trakt/"+ViewBag.Slider+"")" class="img-thumbnail" />
+                        </div>
+                        <div class="input-group col-xs-12">
+                            <input type="file" id="input-img-slider" name="slider" class="file-upload-default">
+                            <input type="text" class="form-control file-upload-info" disabled="" placeholder="تصویر اسلایدر">
+                            <span class="input-group-append">
+                                <button class="file-upload-browse btn btn-primary" type="button">بارگزاری</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script src="/Content/AdminPanel/js/file-upload.js"></script>
+<script src="~/Content/AdminPanel/js/panel-script.js"></script>

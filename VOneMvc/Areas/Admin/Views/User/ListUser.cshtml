@@ -1,0 +1,73 @@
+﻿@model IEnumerable<VOneDomain.Models.User>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">لیست کاربران</h4>
+                <hr />
+                <button onclick="showAddUser()" class="btn btn-primary mr-2">افزودن کاربر</button>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    تصویر پروفایل
+                                </th>
+                                <th>
+                                    نام و نام خانوادگی
+                                </th>
+                                <th>
+                                    ایمیل
+                                </th>
+                                <th>
+                                    نقش کاربر
+                                </th>
+                                <th>
+                                    تاریخ عضویت
+                                </th>
+                                <th>
+                                    عملیات
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="py-1">
+                                        <img src="/Content/Image/User/Thumbnail/@item.ProfileImage" alt="image">
+                                    </td>
+                                    <td>
+                                        @item.FullName
+                                    </td>
+                                    <td>
+                                        @item.Email
+                                    </td>
+                                    <td>
+                                        @item.Role.Title
+                                    </td>
+                                    <td>
+                                        @item.RegisterDate
+                                    </td>
+                                    <td>
+                                        <button type="button" onclick="showEditUser(@item.UserId)" class="btn btn-primary btn-rounded btn-icon">
+                                            <i class="mdi mdi-pencil-circle-outline"></i>
+                                        </button>
+                                        <button type="button" onclick="deleteUser(@item.UserId)" class="btn btn-danger btn-rounded btn-icon">
+                                            <i class="mdi mdi-delete-outline"></i>
+                                        </button>
+                                        <button onclick="lockUser(@item.UserId)" type="button" id="btn-lock-user" class="btn @(item.IsLock?"btn-warning":"btn-success") btn-rounded btn-icon">
+                                            <i class="mdi @(item.IsLock?"mdi-lock-outline":"mdi-lock-open-outline")"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

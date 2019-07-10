@@ -1,0 +1,17 @@
+C:\Users\Davood\source\repos\VOneMvc\VOneBusiness\bin\Debug\VOneBusiness.dll.config
+C:\Users\Davood\source\repos\VOneMvc\VOneBusiness\bin\Debug\VOneBusiness.dll
+C:\Users\Davood\source\repos\VOneMvc\VOneBusiness\bin\Debug\VOneBusiness.pdb
+C:\Users\Davood\source\repos\VOneMvc\VOneBusiness\bin\Debug\VOneDal.dll
+C:\Users\Davood\source\repos\VOneMvc\VOneBusiness\bin\Debug\VOneDomain.dll
+C:\Users\Davood\source\repos\VOneMvc\VOneBusiness\bin\Debug\EntityFramework.dll
+C:\Users\Davood\source\repos\VOneMvc\VOneBusiness\bin\Debug\VOneDal.pdb
+C:\Users\Davood\source\repos\VOneMvc\VOneBusiness\bin\Debug\VOneDal.dll.config
+C:\Users\Davood\source\repos\VOneMvc\VOneBusiness\bin\Debug\VOneDomain.pdb
+C:\Users\Davood\source\repos\VOneMvc\VOneBusiness\bin\Debug\EntityFramework.xml
+C:\Users\Davood\source\repos\VOneMvc\VOneBusiness\obj\Debug\VOneBusiness.csprojAssemblyReference.cache
+C:\Users\Davood\source\repos\VOneMvc\VOneBusiness\obj\Debug\VOneBusiness.csproj.CoreCompileInputs.cache
+C:\Users\Davood\source\repos\VOneMvc\VOneBusiness\obj\Debug\VOneBusiness.csproj.CopyComplete
+C:\Users\Davood\source\repos\VOneMvc\VOneBusiness\obj\Debug\VOneBusiness.dll
+C:\Users\Davood\source\repos\VOneMvc\VOneBusiness\obj\Debug\VOneBusiness.pdb
+C:\Users\Davood\source\repos\VOneMvc\VOneBusiness\bin\Debug\VOneUtility.dll
+C:\Users\Davood\source\repos\VOneMvc\VOneBusiness\bin\Debug\VOneUtility.pdb
